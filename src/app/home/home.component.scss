@@ -1,0 +1,98 @@
+.example-card {
+    width: 608px;
+    max-height: 870px;
+    margin-right: 35%;
+    margin-left: 30%;
+    margin-bottom: 20px;
+    margin-top: 92px !important;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  .lcs{
+      // display: flex;
+      // // justify-content: space-between;
+      // padding: 0 0 14px 0;
+      width: 100%;
+
+  }
+  .fc{
+    display: flex;
+    margin-left: 0;
+    padding: 0 0 16px 0;
+     
+
+  }
+  .like{
+     text-align: left !important;
+     height: 23px;
+     width: 23px;
+     margin-right: 26px;
+  }
+  .lke{
+    display:grid;
+  }
+  .chat{
+     text-align: left !important;
+     height: 23px;
+     width: 23px;
+
+  }
+  .save{
+    height: 24px;
+     width: 18px;
+    //  margin-left: 350px;
+     
+  }
+  // .book{
+   
+  // }
+  .comment{
+    border: none;
+    height:22px;
+    width: 430px;
+    font-size: 14px;
+    margin-left: 11px;
+  }
+.avtar{
+  margin-left: 0px;
+}
+.btn1{
+  position: absolute;
+  top: 45%;
+  left: 93%;
+  width:40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color:#000;
+   font-size: 15px;
+  // padding: 12px px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.btn2{
+  position: absolute;
+  top: 45%;
+  right: 86%;
+  width:40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color:#000;
+  font-size: 15px;
+  // padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.post{
+  border:none;
+  color:#0d88fc;
+   margin-left: 50px;
+  height: 26px;
+  width:33px;
+}

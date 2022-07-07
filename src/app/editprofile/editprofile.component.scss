@@ -1,0 +1,55 @@
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  .example-card{
+      max-width: 500px;
+  }
+  mat-form-field{
+    width:100%;
+}
+mat-card-header{
+    display: flex;
+    
+}
+
+.close{
+
+margin-left: 25%;
+border: none;
+}
+h1{
+   margin-left: 34%;
+}
+.row{
+    display: flex;
+}
+.pull{
+    width:100%;
+}
+.gender{
+    margin-bottom: 20px !important;
+}
+.profilepic{
+
+    border-radius: 50%;
+   margin-left: 40%; 
+}
+.addphoto{
+    position:absolute;
+    z-index: 1;
+    right:190px;
+    top:118px;
+    color: rgb(0, 195, 255);
+    border-radius: 50%;
+
+}
+.profile{
+     margin-bottom: 25px;
+    }
+   .photo{
+    border-radius: 50%;
+    background-color: white;
+    border:1px solid rgb(219, 219, 219);
+     height:30px !important;
+    width: 30px !important;
+   }

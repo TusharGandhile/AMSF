@@ -1,0 +1,153 @@
+<!-- Upload first page -->
+<div  *ngIf="!addimage && !discard && !uploadImage && !next" >
+  <mat-card class="example-card">
+     <!-- <mat-icon class="close" mat-dialog-close>X</mat-icon> -->
+     <img class="close" mat-dialog-close src="./assets/images/Vector.png" height="14px" width="14px" alt="">
+      
+       <div class="content">
+         <img class="upload" src="./assets/images/upload.png" alt="">
+
+        <p class="text-secondary" style="padding-left: 20px;">Drag photo from device to upload</p>
+
+      </div>
+      <!-- Drag and drop Image -->
+      <input type="file" class="file" (change)=" onFileSelected($event)"  #fileInput multiple>
+         <button mat-raised-button class="buton" (click)="fileInput.click()" >Upload From Device</button>
+       </mat-card>
+    </div>
+  
+<!-- Upload second Page -->
+    <div  *ngIf="addimage && !next && !discard && !uploadImage" class="content1">
+       <div class="arrow">
+        <mat-icon style="color: gray;" (click)="DiscardChanges()">arrow_back</mat-icon>
+        <p class="close1" (click)="UploadImage()">Next</p>
+      </div>       
+        <!-- <img  class="upload1" src="{{srcResult}}" alt=""> -->
+        
+        <carousel style="margin: 0.001px !important;" #mainCarousel
+				[images]="myFiles"
+				[cellWidth]="'100%'"
+				[autoplay]="false"
+				[dots]="false"
+        [height]="690" 
+        [cellsToScroll]="a"
+        [width]="680"
+				[loop]="true" style="z-index: 0 !important;">
+			</carousel>
+      
+      <div class="mini" *ngIf="show">
+        <img src="./assets/images/Vectorcar.png" alt=""  style="position: absolute;left:94%;top:45%" (click)="nextgroup()" >
+        <img src="./assets/images/Vectorcarosel.png" alt="" style="position: absolute;top:45%" (click)="prevgroup()" >
+   
+      <carousel class="car" #myCarousel
+    	[cellWidth]="'100%'"
+      [autoplay]="true"
+      [dots]="false"
+      [height]="130" 
+      [width]="560"
+      [arrows]="false"
+      
+      [cellsToShow]="4"
+      [margin]="25"
+      [loop]="true">
+        <ng-container *ngFor="let file of myFiles;index as h">
+        <div class="carousel-cell">
+          <img src="{{file.path}}" alt="" style="position: absolute;" (click)="clickOnImage($event,h)" >
+          <mat-icon style="height:30px;width:30px;top:17%;left:80%;position: relative;"(click)="OnclickCarousel(file)">cancel</mat-icon>
+          <!-- <img src="./assets/images/Vector.png" alt="" > -->
+        </div>
+      </ng-container>
+      <div class="carousel-cell custom" style="background-color:aliceblue;" > 
+        <img src="./assets/images/addimg.png" class="cam" (click)="fileInput.click()" >
+        <input type="file" hidden (change)=" onFileSelected($event)"  #fileInput multiple>
+    <!-- <mat-icon>add_a_photo</mat-icon> -->
+      
+      </div>
+    </carousel>
+      </div>
+      <img src="./assets/images/photos1.png" alt="" style="position:absolute;top:90%;left:85%;height:40px;width:40px" (click)="hideMiniCarousel()">
+      </div>
+
+<!-- Upload third page -->
+        <div  *ngIf="!addimage && !uploadImage && !next && discard ">
+          <mat-card class="example-card">
+          <mat-icon class="close" mat-dialog-close>X</mat-icon>
+              <form >
+              <div class="content2">
+                 <img class="upload2" src="./assets/images/discard.png" alt="">
+                <p class="text-secondary" style="font-weight:700px;font-size:16px" >Do You really want to discard uploading</p>
+              </div>
+                 <button mat-raised-button class="buton2" (click)="DiscardProcess()" >Discard Process</button><br>
+                 <button class="cancel" (click)="addImage()" >Cancel</button>
+              </form>
+              </mat-card>
+            </div>
+  <!-- Upload fourth page -->
+
+  <div  *ngIf="!addimage && !discard && !next && uploadImage " class="content3">
+    <div class="arrow">
+     <p></p>
+     <p class="close2" (click)="proceedNext()" >Upload</p>
+   </div>
+ <div class="container">
+  <carousel style="margin: 0.001px !important;" 
+  [images]="myFiles"
+  [cellWidth]="'100%'"
+  [autoplay]="false"
+  [dots]="false"
+  [height]="600"
+  [counter]="true"
+  [width]="620"
+  [loop]="false" style="z-index: 0 !important;">
+</carousel>
+<div class="one">
+   <div class="d-flex ">
+     <ngx-avatar  name="{{CurrentUser.name}}" src="http://192.168.0.120:8080/images/{{CurrentUser.photo}}" size="40"  ></ngx-avatar>
+     <p style="font-size:18px;font-family: 'Public Sans';
+              font-weight: 600;
+              margin-left: 24px;">{{CurrentUser.name}}</p>
+     </div> 
+     <form [formGroup]="image">
+       <textarea matInput formControlName="caption"  [(ngModel)]="message"  id="caption" cols="40" rows="8" class="comment" placeholder="Add your comment..." ></textarea><br>
+        <img class="emoji"  
+        (click)="toggled = !toggled"
+        [(emojiPickerIf)]="toggled"
+        [emojiPickerDirection]="'top'"
+        (emojiPickerSelect)="handleSelection($event)" 
+        src="./assets/images/happy.png" height="23px" width="23px" alt="">
+    
+   
+    <div class="location">
+    <input ngx-google-places-autocomplete placeholder="Enter location..." [(ngModel)]='formattedaddress' formControlName="location" (onAddressChange)="AddressChange($event)" class="lock" >
+      <img src="./assets/images/location.png" height="23px" width="16px" alt="">
+    </div>
+  </form>
+    <div class="extraimg">
+        <p class="text-secondary">Add Images</p>
+        <img src="./assets/images/addimg.png" height="24px" width="26px" alt="" (click)="fileInput.click()">
+        <input type="file" hidden (change)=" onFileSelected($event)"  #fileInput multiple>
+    </div>
+    </div>  
+  </div>
+ 
+   </div>
+   <!-- upload Fifth page -->
+   <div  *ngIf="next && !addimage && !discard && !uploadImage" >
+    <mat-card class="example-card">
+       <!-- <img class="close" mat-dialog-close src="./assets/images/Vector.png" height="14px" width="14px" alt=""> -->
+        
+         <div class="content5">
+           <img class="upload" src="./assets/images/upload.png" alt="">
+  
+          <p class="text-secondary" style="padding-left: 20px;">Just set on place,Image being upload</p>
+          
+   </div>
+   <div class="p-bar">
+     <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
+   </div>
+
+           <p class="uploading" style="color:#0d88fc;font-weight: 200;" >Uploading</p>
+     </mat-card>
+      </div>
+
+    

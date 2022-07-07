@@ -1,0 +1,29 @@
+
+
+<ng-container *ngIf="savedPost.length>0">
+<mat-grid-list  cols="3" rowHeight="1:1">
+  <ng-container *ngFor="let post of savedPost">
+  <mat-grid-tile > 
+   
+    <div class="savedImg" >
+      <carousel mat-card-image 
+				[images]="post._productId?.photo"
+				[objectFit]="'cover'"
+        [transitionDuration]="1000"
+				[cellWidth]="'100%'"
+				[height]="300"
+        [width]="300"
+				[autoplay]="true"
+        [counter]="true"
+        [arrows]="false"
+				[dots]="false"
+				[loop]="true" style="z-index: 0 !important;" (click)="ShowPost( post._productId._id)" >
+			</carousel>
+    </div>
+  </mat-grid-tile> 
+  </ng-container>
+  </mat-grid-list>
+</ng-container>
+
+<h2 *ngIf="savedPost.length==0" style="margin-top:20%;text-align:center;font-size: 30px;color: grey;">No images saved yet..</h2>
+  <app-header></app-header>

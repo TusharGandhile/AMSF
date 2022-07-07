@@ -1,0 +1,79 @@
+<div mat-dialog-content><mat-card class="example-card">
+  <div class="d-flex">
+
+    <h1>Update Profile</h1><button class="close" mat-dialog-close>X</button>
+  </div>
+  <form [formGroup]="EditProfile">
+  <div class="profile">
+    <img *ngIf="!srcResult"  src="{{imageUrl+CurrentUser.photo}}" height="90px" width="100px"   class="profilepic">  
+    <img *ngIf="srcResult" src="{{srcResult}}" height="90px" width="100px"   class="profilepic">  
+    <button mat-button [matMenuTriggerFor]="menu" class="addphoto">
+    <mat-icon class="photo" >add_a_photo</mat-icon>
+      <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="fileInput.click()" > Add Profile Image</button>
+      <button mat-menu-item (click)="removeProfilePhoto()"> Remove Profile Image</button>
+     </mat-menu>
+    </button>
+  </div>
+  <!-- <button  mat-button mat-dialog-close>X</button> -->
+    
+    
+    <mat-card-content>
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter First Name.." class="form-control" formControlName="name" required>
+            <!-- <mat-error *ngIf="signup.get('firstname')?.invalid"> <mat-icon>warning</mat-icon>Enter firstname..</mat-error> -->
+  
+          </mat-form-field>
+   
+          <mat-form-field class="em" appearance="outline">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" class="form-control"  formControlName="email" required>
+            <!-- <mat-error *ngIf="email.invalid"> <mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Biodata</mat-label>
+            <textarea matInput placeholder="Enter Last Name.." class="form-control" formControlName="bio" required></textarea>
+            <!-- <mat-error *ngIf="signup.get('lastname')?.invalid"> <mat-icon>warning</mat-icon>Enter lastname..</mat-error> -->
+  
+          </mat-form-field>   
+
+          <div class="gender">
+          <mat-label>Gender</mat-label><br>
+          <mat-radio-group aria-label="Select an option" formControlName="gender" >
+            <mat-radio-button value="male" >Male</mat-radio-button>
+            <mat-radio-button value="female" >Female</mat-radio-button>
+            <mat-radio-button value="other" >Other</mat-radio-button>
+          </mat-radio-group><br>
+        </div>
+
+          <mat-label>Date of Birth</mat-label>
+          <mat-form-field appearance="outline" >
+            <mat-label>MM/DD/YYYY</mat-label>
+            <input matInput [matDatepicker]="picker" [value]="dat">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
+          
+          <mat-label>Enter contact number</mat-label>
+          <mat-form-field appearance="outline" class="phone">  
+            <input matInput placeholder="Enter mobile number .." class="form-control"  required 
+            ng2TelInput
+            [ng2TelInputOptions]="{initialCountry: 'in'}"
+            formControlName="mobile"/>
+          </mat-form-field>
+
+          <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" formControlName="photo"> 
+        </mat-card-content>
+
+    <mat-card-actions>
+       <button mat-raised-button color="primary" class="pull" (click)="updateProfile()">Update Profile</button>
+    </mat-card-actions>
+
+    </form>
+    </mat-card>
+  </div>
+
+

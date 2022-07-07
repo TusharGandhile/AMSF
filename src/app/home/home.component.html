@@ -1,0 +1,67 @@
+
+
+<mat-card class="example-card" *ngFor="let prod of product?.results;index as i">
+    <mat-card-header>
+    <ngx-avatar mat-card-avatar name="{{prod._createdBy?.name}}" src="{{imageUrl+prod._createdBy?.photo}}" size="40" class="avtar"></ngx-avatar>
+
+        <mat-card-title>{{product.results[i]._createdBy?.name}}</mat-card-title>
+        <mat-card-subtitle>{{prod.location}}</mat-card-subtitle>
+
+    </mat-card-header>
+    <carousel mat-card-image *ngIf="prod.photo.length!=1"
+				[images]="prod.photo"
+				[objectFit]="'cover'"
+				[cellWidth]="'100%'"
+				[height]="300"
+				[autoplay]="true"
+				[dots]="false"
+                [height]="590" 
+                [width]="595"
+				[loop]="true" style="z-index: 0 !important;">
+			</carousel>
+
+        <img mat-card-image *ngIf="prod.photo.length==1" height="590" width="580" src="{{imageUrl+prod.photo[0].filename}}"
+            alt="Photo of a Shiba Inu">
+
+
+    <div class="lcs d-flex justify-content-between">
+        <div class="fc">
+           <div class="lke">
+            <mat-icon *ngIf="!likenow(prod)" class="like" (click)="LikePost(prod)">favorite_border</mat-icon>
+            <mat-icon *ngIf="likenow(prod)" class="like" style="color:red" (click)="LikePost(prod)">favorite</mat-icon>
+            <small>{{prod.like.length }}likes</small>
+        </div>
+            <mat-icon  class="chat" (click)="ViewComment(prod._id)"> chat_bubble_outline</mat-icon>
+              
+        </div>
+        
+       <div class="book">
+           
+            <mat-icon *ngIf="!savenow(prod)"  class="save" (click)="SavePost(prod)">bookmark_border</mat-icon>
+            <mat-icon *ngIf="savenow(prod)" class="save" (click)="SavePost(prod)">bookmark</mat-icon>
+        </div>
+    </div>
+    <mat-card-content>
+      <div class="d-flex">
+      <strong style="padding-right:5px !important ;">{{prod._createdBy?.name}}</strong>
+        <p>{{prod.caption}}</p>
+      </div>
+        <p class="text-secondary" (click)="ViewComment(prod._id)">view all {{prod.comment.length}} comments</p>
+        <p class="text-secondary">{{socialservices.getUpdatedTime(prod.createdAt)}}</p>
+        
+            <form [formGroup]="com">
+            <!-- <img src="./assets/images/happy.png"       
+             (click)="toggled = !toggled"
+            [(emojiPickerIf)]="toggled"
+            [emojiPickerDirection]="'top'"
+            (emojiPickerSelect)="handleSelection($event)"  height="23px" width="23px" alt=""> -->
+            <input type="text" placeholder="Add your comment..."  [(ngModel)]="Your_comment"
+            class="comment" formControlName="comment">
+            <button class="post" (click)="PostComment(prod._id)">Post</button>
+        </form>
+
+         
+    </mat-card-content>
+</mat-card>
+
+<app-header></app-header>

@@ -1,0 +1,204 @@
+
+.example-card{
+    margin: 0%;
+    width:630px;
+}
+.buton{
+   margin-top: 15%;
+   margin-bottom: 10% !important;
+   margin-left: 38%;
+    background-color:#1890FF;
+    color: white;
+    font-weight: 700;
+    font-family: 'public sans';
+    
+}
+.upload{
+    margin-bottom: 2%;
+    height:200px;
+    width:230px;
+   
+}
+.close{
+    margin-left: 97%;
+    border:none;
+    font-size: 20px;
+}
+.close1{
+    margin-left: 100%;
+    border:none;
+    font-size: 20px;
+    color:#0d88fc
+}
+.content {
+    margin: auto;
+    margin-top: 80px;
+    width: 40%;
+    padding: 10px;
+  }
+.upload1{
+height: 700px !important;
+width:650px;
+object-fit: fill;
+}
+.custom-dialog-container .mat-dialog-container {
+    padding: 0 !important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+   max-width: 1500px !important;
+   max-height: 900px !important;
+}
+.arrow{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.content1{
+    width:680px !important;
+    height: 740px !important;
+    position:relative;
+}
+.cancel{
+    color: #0d88fc;
+    border: none;
+    margin-left: 45%;
+    margin-bottom: 10%;
+
+}
+.upload2{
+    margin-bottom: 8%;
+    width: 140px;
+    height: 190px;
+    margin-left: 63px;
+}
+.content2 {
+    margin: auto;
+    margin-top: 80px;
+    width: 50%;
+    padding: 10px;
+   margin-left: 30%;
+
+  }
+  .buton2{
+    margin-top: 8%;
+    margin-bottom: 4%;
+    margin-left: 38%;
+     background-color:#1890FF;
+     color: white;
+     font-weight: 700;
+     font-family: 'public sans';
+     
+ }
+ .container{
+     display: flex;
+     padding: 0px !important;
+     
+ }
+ .content3{
+    width:1000px !important;
+    height: 650px !important;
+    
+ }
+ .close2{
+     margin-left: 100%;
+     font-size: 20px;
+     color:#0d88fc;
+ }
+ .comment{
+     border:none;
+    height: 242px; 
+ }
+.one{
+margin-left: 16px;
+}
+.d-flex{
+    margin-bottom: 13px;
+}
+// .emoji{
+//     margin-top: 242px;
+
+// }
+.location{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 34px;
+}
+.extraimg{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+//DRAG DROP IMAGE
+p {
+    font-family: Lato;
+  }
+  .file-container {
+    min-height: 200px;
+    min-width: 400px;
+    display: table;
+    width: 100%;
+    background-color: #eee;
+    border: dotted 1px #aaa;
+  }
+  .file{
+      position: absolute;
+
+      top: 25%;
+      left: 15%;
+      background-color: red;
+      opacity: 0;
+      padding: 7rem;
+ 
+    
+    
+  }
+  
+ //Uploading image Fifth page
+ .uploading{
+     margin:10% 45% 10% 45% !important ;
+ }
+ .p-bar{
+     margin-top: 10%;
+ }
+ .content5 {
+    margin: auto;
+    margin-top: 80px;
+    width: 45%;
+    padding: 10px;
+  }
+   
+  //mini carousel
+  .mini{
+background-color: rgb(0, 0, 0,0.5);
+top: 65%;
+position: absolute;
+left: 3%;
+height:155px;
+width: 638px;
+border-radius: 10px;
+border: none;
+padding: 15px;
+
+  }
+.car{
+opacity:1;
+margin-left:4%;
+  }
+.lock{
+    // border:none;
+    width: 300px;
+
+}
+.cam{
+    height: 50px !important;
+    width:50px !important;
+    margin-top:33%;
+    margin-left: 25%;
+}
+.custom{
+    height:110px !important;
+    width: 100px !important;
+    margin-top: 10px;
+    border-radius: 5px;
+}

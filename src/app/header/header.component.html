@@ -1,0 +1,33 @@
+<mat-toolbar class="nav">
+  <div class="logo">
+    <img src="./assets/images/image.png" height="22px" width="101px" alt="">
+  
+</div>
+   <div class="icons">
+   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <!-- <mat-icon *ngIf="page!='home'" class="material-icons-outlined" height="20px" width="22.13px" routerLink="/Home">home_outline</mat-icon> -->
+    <img *ngIf="page!='home'"  src="./assets/images/homeout.png" height="19.83px" width="23.33px" routerLink="/Home" alt="">
+    <img *ngIf="page=='home'"  src="./assets/images/home.png" height="19.83px" width="23.33px" routerLink="/Home" alt="">
+   </button>
+   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon *ngIf="page!='add'" class="material-icons-outlined" style="height:20px;width:22.13px;" (click)="UploadPhoto()">add_a_photo_outline</mat-icon>
+    <mat-icon *ngIf="page=='add'" style="height:20px;width:22.13px;"  (click)="UploadPhoto()">add_a_photo</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon *ngIf="page!='save'" height="20px" width="15.56px" routerLink="/savedimages">bookmark_border</mat-icon>
+   <mat-icon *ngIf="page=='save'" height="20px" width="15.56px" routerLink="/savedimages">bookmark</mat-icon> 
+  </button>
+      <button mat-button [matMenuTriggerFor]="menu">
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="EditProfile()"> <img src="./assets/images/Vector1.png"  class="editprofile " alt=""> Edit Profile</button>
+  <button mat-menu-item (click)="ChangePassword()"> <img src="./assets/images/chpassword.png" class="changepass" alt=""> Change Password</button>
+  <button mat-menu-item> <img src="./assets/images/logout1.png" heigth="21px" width="21px" class="logout" alt="" (click)="logoutUser()"> Logout</button>
+</mat-menu>
+<div class="d-flex ">
+<ngx-avatar name="{{currentUser?.name}}" src="{{imageUrl+currentUser?.photo}}" bgColor="darkorchid" size="32" ></ngx-avatar>
+    <p style="font-size:18px;font-family: 'Public Sans';font-weight: 600;">{{currentUser?.name}}</p>
+</div>
+  </button>
+</div>
+ </mat-toolbar>
+ 

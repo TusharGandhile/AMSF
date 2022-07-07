@@ -1,0 +1,43 @@
+<mat-card class="example-card">
+    <mat-card-header>
+     
+      <mat-card-title >Login Form</mat-card-title>
+    
+    </mat-card-header>
+    <form [formGroup]="login">
+    <mat-card-content>
+    
+       <mat-form-field class="em" appearance="outline">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="" class="form-control"  formControlName="email" required>
+          <mat-error *ngIf="login.get('email')?.invalid"> <mat-icon>warning</mat-icon>Enter valid email..</mat-error>
+         
+          <!-- <mat-error *ngIf="email.invalid"> <mat-icon>warning</mat-icon> {{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+          
+
+            <mat-form-field class="pass" appearance="outline">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" class="form-control"  formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+          <mat-error *ngIf="login.get('password')?.invalid"> <mat-icon>warning</mat-icon>Enter Password..</mat-error>
+          </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="pull" (click)="loginUser()">Login</button>
+    </mat-card-actions>
+    <p class="fp text-secondary" routerLink="/forgotpassword"> Forgot Password?</p>
+     <button *ngIf="verify" mat-raised-button color="primary" class="pull" (click)="VerifyEmail()">Verify Email</button>
+<p class="text-secondary">Don't have account ? <a class="a" routerLink="/Signup"> Sign up</a></p>
+<p class="or text-secondary">OR</p>
+<button  mat-button style="padding: 1rem;margin: 0 28%;" (click)="LoginWithGoogle()">
+  <mat-icon style="width: 40px; height:30px" svgIcon="logo"></mat-icon>
+  Login With Google
+</button>
+  </form>
+    
+  </mat-card>
+  

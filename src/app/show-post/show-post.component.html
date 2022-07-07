@@ -1,0 +1,113 @@
+
+
+ <div class="container" style="margin: 0.001px !important;" >
+  <carousel style="margin: 0.001px !important;" *ngIf="data?.photo?.length!=1"
+				[images]="data?.photo"
+				[objectFit]="'cover'"
+				[cellWidth]="'100%'"
+				[height]="300"
+				[autoplay]="true"
+				[dots]="false"
+        [transitionDuration]="1000"
+        [height]="680" 
+        [width]="610"
+				[loop]="true" style="z-index: 0 !important;" class="savedimg">
+			</carousel>
+
+        <img *ngIf="data?.photo?.length==1" class="savedimg" height="600" width="580" src="{{imageUrl+data?.photo[0]?.filename}}"
+            alt="Photo of a Shiba Inu">
+  <!-- <img  src="http://192.168.0.120:8080/images/{{data.photo.}}" alt="" class="savedimg" > -->
+<div class="one">
+   <div class="d-flex df1">
+     <ngx-avatar  name="{{CurrentUser.name}}" src="{{imageUrl+CurrentUser.photo}}" size="40"  ></ngx-avatar>
+     <div style=" margin-left: 20px;">
+
+       <p style="font-size:18px;font-family: 'Public Sans';
+              font-weight: 500;margin-bottom: 0;">{{CurrentUser.name}}</p>
+        <p class="text-secondary">{{data?.location}}</p> 
+        <p>{{data?.caption}}</p>    
+            </div>
+            <!-- <p>{{data?.updatedAt |  date: 'dd/MM/yyyy' }}</p> -->
+            <p class="text-secondary" style="margin-left:80px">{{getUpdatedTime(data?.createdAt)}}</p>
+     </div>
+     
+     <div class="allComments">
+     <div class="comGroup" *ngFor="let comet of comment" >
+      
+      <ngx-avatar  name="{{comet._userId?.firstName}}" src="{{imageUrl+CurrentUser.photo}}" size="37" (click)="focusMyInput(comet)" ></ngx-avatar>
+      <div class="group">
+      <div class="d-flex" style=" margin-left: 20px;padding-top: 8px;" (click)="focusMyInput(comet)">
+        <p style="font-size:14px;font-family: 'Public Sans';
+               font-weight: 400;margin-right: 10px;">{{comet._userId?.firstName}}</p>
+         <p class="text-secondary">{{comet.comment}}</p>   
+       </div>
+
+             <div class="d-flex" style=" margin-left: 20px;">
+                <p class="text-secondary"  style="font-weight: 400;margin-right: 10px;font-size: 14px;">{{getUpdatedTime(comet?.date)}}</p>
+               <p class="text-secondary" style="font-weight:400;font-size: 14px;" (click)="showReply(comet)">reply</p>   
+                <mat-icon *ngIf="!likeCom(comet)" class="like" style="color:gray;margin-left: 225px;" (click)="LikeComment(data._id,comet._id)">favorite_border</mat-icon>
+               <mat-icon *ngIf="likeCom(comet)"  class="like" (click)="LikeComment(data._id,comet._id)" style="color:red;margin-left: 225px;">favorite</mat-icon> 
+              </div>
+
+              <div *ngIf="comet._id==localId && counter">
+              <div class="d-flex" *ngFor="let reply of comet.reply">
+              <ngx-avatar  name="{{reply._userId?.firstName}}" src="{{imageUrl+CurrentUser.photo}}" size="37"></ngx-avatar>
+              <div class="group">
+              <div class="d-flex" style=" margin-left: 20px;padding-top: 8px;">
+                <p style="font-size:14px;font-family: 'Public Sans';
+                       font-weight: 400;margin-right: 10px;">{{reply._userId?.firstName}}</p>
+                 <p class="text-secondary">{{reply.comment}}</p>     
+               </div>
+               <!-- <div *ngIf="comet._id!=localId">
+                 <p class="text-secondary">No reply yet..</p>
+               </div> -->
+
+               <div class="d-flex" style=" margin-left: 20px;">
+               <p class="text-secondary" style="font-weight:400;font-size: 14px;">{{getUpdatedTime(reply.date)}}</p>   
+                <mat-icon class="like" *ngIf="!likeComReply(reply)" style="color:gray;margin-left: 227px;" (click)="LikeReply(data._id,comet._id,reply._id)" >favorite_border</mat-icon>
+                <mat-icon class="like" *ngIf="likeComReply(reply)"  style="color:red;margin-left: 227px;" (click)="LikeReply(data._id,comet._id,reply._id)" >favorite</mat-icon> 
+              </div>
+            </div>
+               </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- <div class="foot"> -->
+      <div class="likeSave d-flex justify-content-between">
+        <div class="fc">
+           <div class="lke">
+            <mat-icon *ngIf="!likenow(data)"  class="like" (click)="LikePost(data)">favorite_border</mat-icon>
+            <mat-icon *ngIf="likenow(data)"  class="like" (click)="LikePost(data)" style="color:red">favorite</mat-icon>
+            <small style="font-size:15px;">{{data?.like?.length }} like</small>
+            <small style="font-size:14px;color:gray">{{getUpdatedTime(data?.createdAt)}}</small>
+        </div>
+        </div>
+        
+       <div class="book">
+           
+            <mat-icon *ngIf="!savenow(data)" class="save" (click)="SavePost(data)" >bookmark_border</mat-icon>
+            <mat-icon *ngIf="savenow(data)" class="save" (click)="SavePost(data)">bookmark</mat-icon>
+        </div>
+    <!-- </div> -->
+    
+    </div>
+    <div class="d-flex">
+    <form [formGroup]="com">
+       <!-- <img class="emoji"  
+       (click)="toggled = !toggled"
+       [(emojiPickerIf)]="toggled"
+       [emojiPickerDirection]="'top'"
+       (emojiPickerSelect)="handleSelection($event)" 
+       src="./assets/images/happy.png" height="23px" width="23px" alt=""> -->
+       <input type="text" matInput formControlName="comment"  [(ngModel)]="message" id="comment"  class="comment" placeholder="Add your comment..." ><br>
+   
+   </form>
+   <button class="post" (click)="PostComment(data._id)" >Post</button>
+  </div>
+    </div>  
+  </div>
+ 
+  <mat-icon style="height:30px;width:30px;top:10%;left:85%;position: absolute;" (click)="closeShowPost()">cancel</mat-icon>
+

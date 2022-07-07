@@ -1,0 +1,47 @@
+// .example-spacer {
+//     flex: 1 1 auto;
+//   }
+.nav{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+   align-items: center;
+  padding: 10px;
+  gap: 10px;
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+   background: #FFFFFF;
+  box-shadow: 0px 1px 1px rgba(33, 43, 54, 0.25);
+
+}
+
+ .logo{
+margin-left: 232px;
+ }
+ .icons{
+margin-right: 35px;
+
+ }
+.d-flex{
+  margin-right: 232px;
+  gap: 8px;
+}
+.editprofile{
+  height: 17px;
+  width:22px;
+  margin-right: 18px;
+  
+}
+.changepass{
+  width: 21px;
+  height:18px;
+  margin-right: 18px;
+}
+.logout{
+  width: 17px;
+  height: 17px;
+  margin-right: 19px;
+}
